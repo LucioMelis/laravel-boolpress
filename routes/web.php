@@ -31,5 +31,5 @@ Route::middleware('auth')
     });
 
 Route::get("{any?}", function () {
-    return view('guest.home');
+    return view('guest.home_guest');
 })->where("any", ".*");
