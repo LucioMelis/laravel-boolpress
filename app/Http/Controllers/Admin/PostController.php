@@ -87,7 +87,7 @@ class PostController extends Controller
         if (!$id) {
         abort(404);
         }
-        return view('admin.posts.show', compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**

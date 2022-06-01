@@ -8,7 +8,7 @@
                     <div class="card-header">Edit a Post</div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.posts.update', $post) }}" method="POST">
+                        <form action="{{ route('admin.posts.update', $post->id) }}" method="POST">
                             {{-- Token --}}
                             @csrf
                             {{-- / Token --}}
@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label for="title">Title:</label>
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror "
-                                    placeholder="Post's title">
+                                    placeholder="Post's title" value="{{ old($post->title) }}">
                                 @error('title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -29,7 +29,7 @@
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
                                     placeholder="Post's content">
-
+                                    {{ old($post->content) }}
                         </textarea>
                                 @error('content')
                                     <div class="invalid-feedback">
