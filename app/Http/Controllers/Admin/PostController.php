@@ -42,22 +42,19 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:250',
-            'content' => 'required'
+            'content' => 'required|min:5|max:100'
+        ], [
+            'title.required' => 'Ttitolo deve essere valorizzato',
+            'title.max' => 'Hai superato i :attribute caratteri',
+            'content.min' => 'Minimo 5 caratteri'
+
         ]);
         $postData = $request->all();
         $newPost = new Post();
         $newPost->fill($postData);
-        $slug = Str::slug($newPost->title);
-        $alternativeSlug = $slug;
-        $postFound = Post::where('slug', $slug)->first();
-        $counter = 1;
 
-        while ($postFound) {
-            $alternativeSlug = $slug . '_' . $counter;
-            $counter++;
-            $postFound = Post::where('slug', $alternativeSlug)->first();
-        }
-        $newPost->slug = $alternativeSlug;
+        $newPost->slug = convertToSlug($newPost->title);
+
         $newPost->save();
         return redirect()->route('admin.posts.index');
     }
@@ -70,7 +67,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post= Post::find($id);
+        if (!$id) {
+        abort(404);
+        }
+        return view('admin.posts.show', compact('post')); //
     }
 
     /**
