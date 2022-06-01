@@ -53,7 +53,7 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($postData);
 
-        $newPost->slug = convertToSlug($newPost->title);
+        $newPost->slug = Post::convertToSlug($newPost->title);
 
         $newPost->save();
         return redirect()->route('admin.posts.index');
@@ -83,6 +83,11 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post= Post::find($id);
+        if (!$id) {
+        abort(404);
+        }
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -92,9 +97,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:250',
+            'content' => 'required',
+        ]);
+        $post = Post::find($id);
+        $postData = $request->all();
+
+        $post->fill($postData);
+        $post->slug = Post::convertToSlug($post->title);
+
+        $post->update();
+        return redirect()->route('admin.posts.index',);
     }
 
     /**
@@ -105,6 +121,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts= Post::find($id);
+        $posts->delete();
+        return redirect()->route('admin.posts.index');
     }
 }

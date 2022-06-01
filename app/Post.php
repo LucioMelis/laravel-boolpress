@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Str;
+
 class Post extends Model
 {
     /**
@@ -12,9 +14,10 @@ class Post extends Model
      * @var string
      */
     protected $table = 'posts';
+
     protected $fillable = ['title', 'content', 'slug'];
 
-    public function convertToSlug($title)
+    public static function convertToSlug($title)
     {
         $slugPrefix = Str::slug($title);
         $slug = $slugPrefix;
