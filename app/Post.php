@@ -15,6 +15,11 @@ class Post extends Model
      */
     protected $table = 'posts';
 
+    // Funzione per la relazione con la tabella Category (molti post hanno una categoria)
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
     protected $fillable = ['title', 'content', 'slug'];
 
     public static function convertToSlug($title)
