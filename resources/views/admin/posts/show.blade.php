@@ -11,7 +11,7 @@
             @method('DELETE')
             <button type='submit' onclick="return confirm('Sicuro di voler cancellare questo post?')" type="submit" value=""
                 class="btn btn-danger">
-                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-trash-alt">Elimina Post</i>
             </button>
         </form>
     </div>
@@ -19,5 +19,9 @@
         <h3>{{ $post->title }}</h3>
         <p>{{ $post->content }}</p>
         <p>{{ $category->name }}</p>
+        <button class="btn btn-success">
+            <a href="{{ route('admin.posts.index') }}">Torna ai Post</a>
+        </button>
+
     </div>
 @endsection

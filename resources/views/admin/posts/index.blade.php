@@ -31,6 +31,9 @@
                                 <td>{{ $post->slug }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('admin.posts.show', $post->id) }}">
+
+                                        <button class="btn btn-outline-info">View Post</button>
+
                                         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
                                             class="d-inline-block ">
                                             @csrf
