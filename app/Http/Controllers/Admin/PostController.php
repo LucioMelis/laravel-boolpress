@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -29,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create', ['categories'=> $categories]);
     }
 
     /**
@@ -71,7 +73,10 @@ class PostController extends Controller
         if (!$id) {
         abort(404);
         }
-        return view('admin.posts.show', compact('post')); //
+
+        $categories = Category::all();
+
+        return view('admin.posts.show', compact('post'), ['categories'=> $categories] ); //
     }
 
     /**

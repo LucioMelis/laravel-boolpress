@@ -26,7 +26,26 @@
                                     </div>
                                 @enderror
                             </div>
-                            {{-- / title post --}}
+                            {{-- / categories post --}}
+                            <div class="form-group">
+                                <label>Categoria Post:</label>
+
+                                <select name="category_id">
+                                    <option value="">--Seleziona la Categoria--</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{-- Per poter avere il SELECTED solo su quello selezionato agiamo con un ternario --}}
+                                            {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @error('category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
                             {{-- content post --}}
                             <div class="form-group">

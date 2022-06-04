@@ -25,6 +25,29 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            {{-- modifica category select --}}
+
+                            <div class="form-group">
+                                <label>Categoria Post:</label>
+
+                                <select name="category_id">
+                                    <option value="">--Seleziona la Categoria--</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{-- Per poter avere il SELECTED solo su quello selezionato agiamo con un ternario --}}
+                                            {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @error('category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
