@@ -74,9 +74,9 @@ class PostController extends Controller
         abort(404);
         }
 
-        $categories = Category::all();
+        $category = Category::find($post->category_id);
 
-        return view('admin.posts.show', compact('post'), ['categories'=> $categories] ); //
+        return view('admin.posts.show', compact('post'), ['category'=> $category] ); //
     }
 
     /**
@@ -92,7 +92,9 @@ class PostController extends Controller
         if (!$id) {
         abort(404);
         }
-        return view('admin.posts.edit', compact('post'));
+
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post'), ['categories'=> $categories]);
     }
 
     /**
