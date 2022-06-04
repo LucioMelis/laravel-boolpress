@@ -51,9 +51,7 @@
                             <div class="form-group">
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
-                                    placeholder="Post's content">
-                                    {{ old($post->content) }}
-                        </textarea>
+                                    placeholder="Post's content">{{ old($post->content) }}</textarea>
                                 @error('content')
                                     <div class="invalid-feedback">
                                         {{ $message }}
