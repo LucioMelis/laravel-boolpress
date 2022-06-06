@@ -13,7 +13,7 @@
                             @csrf
                             {{-- / Token --}}
 
-                            {{-- title post --}}
+                            {{-- Modifica title post --}}
                             @method('PUT')
                             <div class="form-group">
                                 <label for="title">Title:</label>
@@ -48,6 +48,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Modifica content --}}
                             <div class="form-group">
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
@@ -60,6 +61,23 @@
                             </div>
                             {{-- / content post --}}
 
+                            {{-- Modifica Checkbox tag --}}
+                            <div class="form-group">
+                                <p>Tags:</p>
+                                @foreach ($tags as $tag)
+                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]"
+                                        {{ $post->tags->contains($tag) ? 'checked' : '' }}
+                                        class="form-check-input @error('tags') is-invalid @enderror ">
+                                    <div class="form-check-label">{{ $tag->name }}</div>
+                                @endforeach
+
+                                @error('tags[]')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            {{-- Invio del form --}}
                             <div class="form-group">
                                 <input type="submit" class="btn btn-info white" value="Edit Post">
                             </div>

@@ -104,7 +104,10 @@ class PostController extends Controller
         }
 
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post'), ['categories'=> $categories]);
+
+        $tags= Tag::all();
+
+        return view('admin.posts.edit', compact('post','categories','tags'));
     }
 
     /**
@@ -127,6 +130,8 @@ class PostController extends Controller
 
         $post->fill($postData);
         $post->slug = Post::convertToSlug($post->title);
+
+        $post->tags()->sync($postData['tags']);
 
         $post->update();
         return redirect()->route('admin.posts.index',);

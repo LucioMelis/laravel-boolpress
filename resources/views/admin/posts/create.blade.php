@@ -62,8 +62,8 @@
                             <div class="form-group">
                                 <p>Tags:</p>
                                 @foreach ($tags as $tag)
-                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]" {{-- {{ in_array($tag->id, old('tags[]', [])) ? 'checked' : '' }} --}}
-                                        {{ count(tags[]) > 0 ? 'checked' : '' }}
+                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]"
+                                        {{ in_array($tag->id, old('tags[]', [])) ? 'checked' : '' }} {{-- {{ count(tags[]) > 0 ? 'checked' : '' }} --}}
                                         class="form-check-input @error('tags') is-invalid @enderror ">
                                     <div class="form-check-label">{{ $tag->name }}</div>
                                 @endforeach
