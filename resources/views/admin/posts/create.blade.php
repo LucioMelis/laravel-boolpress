@@ -60,8 +60,22 @@
                                     </div>
                                 @enderror
                             </div>
-                            {{-- / content post --}}
+                            {{-- input Tag checkbox --}}
+                            <div class="form-group">
+                                <p>Tags:</p>
+                                @foreach ($tags as $tag)
+                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]"
+                                        class="form-check-input @error('tags') is-invalid @enderror ">
+                                    <div class="form-check-label">{{ $tag->name }}</div>
+                                @endforeach
 
+                                @error('tags[]')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            {{-- button submit --}}
                             <div class="form-group">
                                 <input type="submit" class="btn btn-info white" value="Create Post">
                             </div>
