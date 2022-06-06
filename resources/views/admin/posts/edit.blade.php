@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label for="title">Title:</label>
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror "
-                                    placeholder="Post's title" value="{{ old($post->title) }}">
+                                    placeholder="Post's title" value="{{ old('title', $post->title) }}">
                                 @error('title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
-                                    placeholder="Post's content">{{ old($post->content) }}</textarea>
+                                    placeholder="Post's content">{{ old('content', $post->content) }}</textarea>
                                 @error('content')
                                     <div class="invalid-feedback">
                                         {{ $message }}

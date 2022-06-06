@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>Categoria Post:</label>
 
-                                <select name="category_id">
+                                <select name="category_id" class="@error('category_id') is-invalid @enderror">
                                     <option value="">--Seleziona la Categoria--</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{-- Per poter avere il SELECTED solo su quello selezionato agiamo con un ternario --}}
@@ -51,9 +51,7 @@
                             <div class="form-group">
                                 <label for="content">Content:</label>
                                 <textarea type="text" name="content" class="form-control @error('content') is-invalid @enderror"
-                                    placeholder="Post's content">
-
-                        </textarea>
+                                    placeholder="Post's content"></textarea>
                                 @error('content')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -64,7 +62,8 @@
                             <div class="form-group">
                                 <p>Tags:</p>
                                 @foreach ($tags as $tag)
-                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]"
+                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]" {{-- {{ in_array($tag->id, old('tags[]', [])) ? 'checked' : '' }} --}}
+                                        {{ count(tags[]) > 0 ? 'checked' : '' }}
                                         class="form-check-input @error('tags') is-invalid @enderror ">
                                     <div class="form-check-label">{{ $tag->name }}</div>
                                 @endforeach

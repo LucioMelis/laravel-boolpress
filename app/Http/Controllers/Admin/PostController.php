@@ -46,20 +46,28 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:250',
-            'content' => 'required|min:5|max:100'
+            'content' => 'required|min:5|max:100',
+            'category_id' =>'required',
+            'tags'=>'exists:tags,id'
         ], [
             'title.required' => 'Ttitolo deve essere valorizzato',
             'title.max' => 'Hai superato i :attribute caratteri',
             'content.min' => 'Minimo 5 caratteri'
-
         ]);
         $postData = $request->all();
+
         $newPost = new Post();
+
         $newPost->fill($postData);
 
         $newPost->slug = Post::convertToSlug($newPost->title);
 
         $newPost->save();
+        // ADD TAGS
+        $newPost->tags()->sync($postData['tags']);
+
+        $newPost->save();
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -111,6 +119,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:250',
             'content' => 'required',
+            'category_id' =>'required',
+            'tags'=>'exists:tags,id'
         ]);
         $post = Post::find($id);
         $postData = $request->all();
