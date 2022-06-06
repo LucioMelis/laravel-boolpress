@@ -18,6 +18,7 @@
                             <th>ID</th>
                             <th>Title</th>
                             <th>Slug</th>
+                            <th>Category</th>
                             <th class="text-center">Actions</th>
                         </tr>
                         {{-- / Table title --}}
@@ -29,6 +30,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->slug }}</td>
+                                <td>{{ $post->category->name }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('admin.posts.show', $post->id) }}">
 
