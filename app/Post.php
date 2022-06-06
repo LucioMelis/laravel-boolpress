@@ -19,6 +19,10 @@ class Post extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+    // Funzione per la relazione con la tabella Tags (molti post hanno molti tag)
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
 
     protected $fillable = ['title', 'content', 'slug','category_id'];
 

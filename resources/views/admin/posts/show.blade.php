@@ -18,7 +18,9 @@
     <div class="mt-3">
         <h3>{{ $post->title }}</h3>
         <p>{{ $post->content }}</p>
-        <p>{{ $category->name }}</p>
+        {{-- $post viene mandato dallo show, category è la funzione presente nel modello post, name è l'attributo presente nella colonna della tabella category --}}
+        {{-- questo perchè ci sono delle relazioni tra le tabelle --}}
+        <p>{{ $post->category->name }}</p>
         <button class="btn btn-success">
             <a href="{{ route('admin.posts.index') }}">Torna ai Post</a>
         </button>
