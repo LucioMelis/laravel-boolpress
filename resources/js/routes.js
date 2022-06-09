@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 // Tutti gli import delle routes
 import HomeComponent from './pages/HomeComponent'
 import ContactsComponent from './pages/ContactsComponent'
+import NotFoundComponent from './pages/NotFoundComponent'
 
 // Inseriamo le rotte
 const router = new VueRouter({
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: '/contacts',
             name: 'contacts',
             component: ContactsComponent
+        },
+        {
+            path: '/*',
+            name: 'notFound',
+            component: NotFoundComponent
         }
     ]
 })
