@@ -7,7 +7,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "HomeComponent",
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 text-center">Contatti</div>
+      <div class="col-12 text-center">Sezione My Post</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ContactsComponent",
+  name: "BlogComponent",
 };
 </script>
 
