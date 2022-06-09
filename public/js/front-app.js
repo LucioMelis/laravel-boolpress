@@ -37525,7 +37525,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Benvenuto in Vue")])
+  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37558,7 +37558,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [_vm._v("Home")]),
+        _c("div", { staticClass: "col-12 text-center" }, [_vm._v("Home")]),
       ]),
     ])
   },
@@ -53094,6 +53094,38 @@ var app = new Vue({
 
 /***/ }),
 
+/***/ "./resources/js/pages/ContactsComponent.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/pages/ContactsComponent.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/ContactsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/HomeComponent.vue":
 /*!**********************************************!*\
   !*** ./resources/js/pages/HomeComponent.vue ***!
@@ -53176,9 +53208,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_HomeComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/HomeComponent */ "./resources/js/pages/HomeComponent.vue");
+/* harmony import */ var _pages_ContactsComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/ContactsComponent */ "./resources/js/pages/ContactsComponent.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // Tutti gli import delle routes
+
 
  // Inseriamo le rotte
 
@@ -53188,6 +53222,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/',
     name: 'home',
     component: _pages_HomeComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/contacts',
+    name: 'contacts',
+    component: _pages_ContactsComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 }); // Esportiamo il router
 
