@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ strreplace('', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -19,14 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js%22%3E"></script>
 </head>
 
 <body>
-    <div id=" app">
-        <main class="py-4">
-            @yield('vue')
-        </main>
+    <div id="app">
     </div>
 
 </body>
