@@ -6,7 +6,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // window.Vue = require("vue");
 window.axios
-    .get("/api/posts")
+    .get("http://127.0.0.1:8000/api/posts")
     .then((res) => {
         console.log(res);
     })
