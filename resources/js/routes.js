@@ -7,6 +7,7 @@ import HomeComponent from './pages/HomeComponent'
 import ContactsComponent from './pages/ContactsComponent'
 import NotFoundComponent from './pages/NotFoundComponent'
 import BlogComponent from './pages/BlogComponent'
+import SinglePostComponent from './pages/SinglePostComponent'
 
 // Inseriamo le rotte
 const router = new VueRouter({
@@ -31,6 +32,11 @@ const router = new VueRouter({
             path: '/*',
             name: 'notFound',
             component: NotFoundComponent
+        },
+        {
+            path: '/blog/:id',
+            name: 'single-post',
+            component: SinglePostComponent
         }
     ]
 })

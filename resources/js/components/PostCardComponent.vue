@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <div class="d-flex flex-column">
-      <div v-for="(post, index) in posts" :key="index">
+      <div v-for="post in posts" :key="post.id">
         <h1>{{ post.title }}</h1>
         <p>{{ post.content }}</p>
+        <router-link :to="{ name: 'single-post', params: { id: post.id } }">
+          Visualizza Post
+        </router-link>
       </div>
     </div>
   </div>
