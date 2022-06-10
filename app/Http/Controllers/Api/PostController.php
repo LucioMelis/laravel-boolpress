@@ -19,6 +19,8 @@ class PostController extends Controller
         $posts = Post::all();
         $result = ['results'=>$posts, 'success'=>true];
         return response()->json($result);
+        // si può implementare con
+        // $post = Post::paginate(3), in caso di molteplici post restituisce solo il numero di post indicati nelle tonde
     }
 
     /**
