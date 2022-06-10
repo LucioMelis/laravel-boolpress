@@ -2058,7 +2058,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(results);
 
         if (results.status === 200 && results.data.success) {
-          _this.posts = results.data.results;
+          _this.posts = results.data.results.data;
           _this.currentPage = results.data.results.current_page;
           _this.previousPageLink = results.data.results.prev_page_url;
           _this.nextPageLink = results.data.results.next_page_url;
