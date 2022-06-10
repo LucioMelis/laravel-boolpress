@@ -2148,11 +2148,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePostComponent",
   data: function data() {
     return {
-      posts: undefined
+      post: undefined
     };
   },
   mounted: function mounted() {
@@ -2164,7 +2178,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(results);
 
       if (results.status === 200 && results.data.success) {
-        _this.posts = results.data.results;
+        _this.post = results.data.results;
       } // console.log(this.posts);
 
     })["catch"](function (e) {
@@ -38031,11 +38045,39 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 text-center" }, [
-        _vm._v("Sezione My Post"),
+        _vm._v("Dettaglio Post"),
       ]),
       _vm._v(" "),
-      _vm.posts
-        ? _c("div", [_vm._v("\n      " + _vm._s(_vm.posts.title) + "\n    ")])
+      _vm.post
+        ? _c("div", [
+            _c("h2", [_vm._v(_vm._s(_vm.post.title))]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Contenuto Post:")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+            _vm._v(" "),
+            _c("div", [
+              _c("h3", [_vm._v("Categoria:")]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.post.category.name))]),
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("h3", [_vm._v("Tags:")]),
+              _vm._v(" "),
+              _c(
+                "ul",
+                _vm._l(_vm.post.tags, function (tag) {
+                  return _c("li", { key: tag.id }, [
+                    _vm._v(
+                      "\n            " + _vm._s(tag.name) + "\n          "
+                    ),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ])
         : _c("div", [_vm._v("Caricamento in corso")]),
     ]),
   ])

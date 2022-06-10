@@ -1,9 +1,23 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 text-center">Sezione My Post</div>
-      <div v-if="posts">
-        {{ posts.title }}
+      <div class="col-12 text-center">Dettaglio Post</div>
+      <div v-if="post">
+        <h2>{{ post.title }}</h2>
+        <h3>Contenuto Post:</h3>
+        <p>{{ post.content }}</p>
+        <div>
+          <h3>Categoria:</h3>
+          <p>{{ post.category.name }}</p>
+        </div>
+        <div>
+          <h3>Tags:</h3>
+          <ul>
+            <li v-for="tag in post.tags" :key="tag.id">
+              {{ tag.name }}
+            </li>
+          </ul>
+        </div>
       </div>
       <div v-else>Caricamento in corso</div>
     </div>
@@ -15,7 +29,7 @@ export default {
   name: "SinglePostComponent",
   data() {
     return {
-      posts: undefined,
+      post: undefined,
     };
   },
 
@@ -28,7 +42,7 @@ export default {
       .then((results) => {
         console.log(results);
         if (results.status === 200 && results.data.success) {
-          this.posts = results.data.results;
+          this.post = results.data.results;
         }
         // console.log(this.posts);
       })
