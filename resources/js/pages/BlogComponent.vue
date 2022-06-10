@@ -4,10 +4,18 @@
       <div class="col-12 text-center">Sezione My Post</div>
       <div v-if="posts.length > 0">
         <PostCardComponent :posts="posts" />
-        <button class="btn" v-if="previousPageLink" @click="goPreviousPage()">
+        <button
+          class="btn btn-primary"
+          v-if="previousPageLink"
+          @click="goPreviousPage()"
+        >
           Prev
         </button>
-        <button class="btn" v-if="nextPageLink" @click="goNextPage()">
+        <button
+          class="btn btn-primary"
+          v-if="nextPageLink"
+          @click="goNextPage()"
+        >
           Next
         </button>
       </div>

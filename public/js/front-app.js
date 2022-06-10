@@ -2033,6 +2033,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BlogComponent",
@@ -37934,7 +37942,7 @@ var render = function () {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn",
+                      staticClass: "btn btn-primary",
                       on: {
                         click: function ($event) {
                           return _vm.goPreviousPage()
@@ -37949,7 +37957,7 @@ var render = function () {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn",
+                      staticClass: "btn btn-primary",
                       on: {
                         click: function ($event) {
                           return _vm.goNextPage()
