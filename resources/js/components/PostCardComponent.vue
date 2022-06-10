@@ -4,7 +4,7 @@
       <div v-for="post in posts" :key="post.id">
         <h1>{{ post.title }}</h1>
         <p>{{ post.content }}</p>
-        <router-link :to="{ name: 'single-post', params: { id: post.id } }">
+        <router-link :to="{ name: 'single-post', params: { slug: post.slug } }">
           Visualizza Post
         </router-link>
       </div>

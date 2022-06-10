@@ -2059,9 +2059,9 @@ __webpack_require__.r(__webpack_exports__);
 
         if (results.status === 200 && results.data.success) {
           _this.posts = results.data.results;
-          _this.currentPage = results.data.results.data.current_page;
-          _this.previousPageLink = results.data.results.data.prev_page_url;
-          _this.nextPageLink = results.data.results.data.next_page_url;
+          _this.currentPage = results.data.results.current_page;
+          _this.previousPageLink = results.data.results.prev_page_url;
+          _this.nextPageLink = results.data.results.next_page_url;
         }
 
         console.log(_this.posts);
@@ -2195,9 +2195,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var id = this.$route.params.id;
+    var slug = this.$route.params.slug;
     console.log(id);
-    window.axios.get("http://127.0.0.1:8000/api/posts/" + id).then(function (results) {
+    window.axios.get("http://127.0.0.1:8000/api/posts/" + slug).then(function (results) {
       console.log(results);
 
       if (results.status === 200 && results.data.success) {
@@ -37882,7 +37882,9 @@ var render = function () {
             _c(
               "router-link",
               {
-                attrs: { to: { name: "single-post", params: { id: post.id } } },
+                attrs: {
+                  to: { name: "single-post", params: { slug: post.slug } },
+                },
               },
               [_vm._v("\n        Visualizza Post\n      ")]
             ),
@@ -54193,7 +54195,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'notFound',
     component: _pages_NotFoundComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/blog/:id',
+    path: '/blog/:slug',
     name: 'single-post',
     component: _pages_SinglePostComponent__WEBPACK_IMPORTED_MODULE_6__["default"]
   }]

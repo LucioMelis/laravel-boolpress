@@ -43,9 +43,9 @@ export default {
           console.log(results);
           if (results.status === 200 && results.data.success) {
             this.posts = results.data.results;
-            this.currentPage = results.data.results.data.current_page;
-            this.previousPageLink = results.data.results.data.prev_page_url;
-            this.nextPageLink = results.data.results.data.next_page_url;
+            this.currentPage = results.data.results.current_page;
+            this.previousPageLink = results.data.results.prev_page_url;
+            this.nextPageLink = results.data.results.next_page_url;
           }
           console.log(this.posts);
         })

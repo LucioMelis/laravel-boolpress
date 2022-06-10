@@ -16,11 +16,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::paginate(3);
         $result = ['results'=>$posts, 'success'=>true];
         return response()->json($result);
         // si può implementare con
-        // $post = Post::paginate(3), in caso di molteplici post restituisce solo il numero di post indicati nelle tonde
+        // in caso di molteplici post restituisce solo il numero di post indicati nelle tonde
+
     }
 
     /**
@@ -50,9 +52,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::where('id', $id)->with(['category','tags'])->first();
+        $post = Post::where('slug', $slug)->with(['category','tags'])->first();
         $result = ['results'=>$post, 'success'=>true];
         return esponse()->json($result);
     }
