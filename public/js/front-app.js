@@ -2027,6 +2027,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BlogComponent",
@@ -2035,23 +2041,40 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      currentPage: 1,
+      previosPageLink: "",
+      nextPageLink: ""
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.loadPage("http://127.0.0.1:8000/api/posts");
+  },
+  methods: {
+    loadPage: function loadPage(url) {
+      var _this = this;
 
-    window.axios.get("http://127.0.0.1:8000/api/posts").then(function (results) {
-      console.log(results);
+      window.axios.get(url).then(function (results) {
+        console.log(results);
 
-      if (results.status === 200 && results.data.success) {
-        _this.posts = results.data.results;
-      }
+        if (results.status === 200 && results.data.success) {
+          _this.posts = results.data.results;
+          _this.currentPage = results.data.results.data.current_page;
+          _this.previousPageLink = results.data.results.data.prev_page_url;
+          _this.nextPageLink = results.data.results.data.next_page_url;
+        }
 
-      console.log(_this.posts);
-    })["catch"](function (e) {
-      console.log(e);
-    });
+        console.log(_this.posts);
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    },
+    goPreviousPage: function goPreviousPage() {
+      this.loadPage(this.previousPageLink);
+    },
+    goNextPage: function goNextPage() {
+      this.loadPage(this.nextPageLink);
+    }
   }
 });
 
@@ -37902,7 +37925,39 @@ var render = function () {
       _vm.posts.length > 0
         ? _c(
             "div",
-            [_c("PostCardComponent", { attrs: { posts: _vm.posts } })],
+            [
+              _c("PostCardComponent", { attrs: { posts: _vm.posts } }),
+              _vm._v(" "),
+              _vm.previousPageLink
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn",
+                      on: {
+                        click: function ($event) {
+                          return _vm.goPreviousPage()
+                        },
+                      },
+                    },
+                    [_vm._v("\n        Prev\n      ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nextPageLink
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn",
+                      on: {
+                        click: function ($event) {
+                          return _vm.goNextPage()
+                        },
+                      },
+                    },
+                    [_vm._v("\n        Next\n      ")]
+                  )
+                : _vm._e(),
+            ],
             1
           )
         : _c("div", [_vm._v("Caricamento in corso")]),
