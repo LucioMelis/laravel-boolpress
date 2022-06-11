@@ -4,14 +4,14 @@
       <div class="col-12 text-center">Dettaglio Post</div>
       <div v-if="post">
         <h2>{{ post.title }}</h2>
-        <h3>Contenuto Post:</h3>
+        <h4>Contenuto Post:</h4>
         <p>{{ post.content }}</p>
         <div>
-          <h3>Categoria:</h3>
+          <h4>Categoria:</h4>
           <p>{{ post.category.name }}</p>
         </div>
         <div>
-          <h3>Tags:</h3>
+          <h4>Tags:</h4>
           <ul>
             <li v-for="tag in post.tags" :key="tag.id">
               {{ tag.name }}
@@ -35,12 +35,12 @@ export default {
 
   mounted() {
     const slug = this.$route.params.slug;
-    // console.log(id);
+    // console.log(slug);
 
     window.axios
       .get("http://127.0.0.1:8000/api/posts/" + slug)
       .then((results) => {
-        console.log(results);
+        // console.log(results);
         if (results.status === 200 && results.data.success) {
           this.post = results.data.results;
         }

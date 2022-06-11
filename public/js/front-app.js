@@ -2201,11 +2201,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var slug = this.$route.params.slug; // console.log(id);
+    var slug = this.$route.params.slug; // console.log(slug);
 
     window.axios.get("http://127.0.0.1:8000/api/posts/" + slug).then(function (results) {
-      console.log(results);
-
+      // console.log(results);
       if (results.status === 200 && results.data.success) {
         _this.post = results.data.results;
       }
@@ -38116,18 +38115,18 @@ var render = function () {
         ? _c("div", [
             _c("h2", [_vm._v(_vm._s(_vm.post.title))]),
             _vm._v(" "),
-            _c("h3", [_vm._v("Contenuto Post:")]),
+            _c("h4", [_vm._v("Contenuto Post:")]),
             _vm._v(" "),
             _c("p", [_vm._v(_vm._s(_vm.post.content))]),
             _vm._v(" "),
             _c("div", [
-              _c("h3", [_vm._v("Categoria:")]),
+              _c("h4", [_vm._v("Categoria:")]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(_vm.post.category.name))]),
             ]),
             _vm._v(" "),
             _c("div", [
-              _c("h3", [_vm._v("Tags:")]),
+              _c("h4", [_vm._v("Tags:")]),
               _vm._v(" "),
               _c(
                 "ul",
@@ -54198,13 +54197,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'blog',
     component: _pages_BlogComponent__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
-    path: '/*',
-    name: 'notFound',
-    component: _pages_NotFoundComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, {
     path: '/blog/:slug',
     name: 'single-post',
     component: _pages_SinglePostComponent__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, {
+    path: '/*',
+    name: 'notFound',
+    component: _pages_NotFoundComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }]
 }); // Esportiamo il router
 

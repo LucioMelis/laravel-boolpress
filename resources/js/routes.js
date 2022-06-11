@@ -29,15 +29,16 @@ const router = new VueRouter({
             component: BlogComponent
         },
         {
-            path: '/*',
-            name: 'notFound',
-            component: NotFoundComponent
-        },
-        {
             path: '/blog/:slug',
             name: 'single-post',
             component: SinglePostComponent
+        },
+        {
+            path: '/*',
+            name: 'notFound',
+            component: NotFoundComponent
         }
+
     ]
 })
 // Esportiamo il router
