@@ -35,7 +35,7 @@ export default {
 
   mounted() {
     const slug = this.$route.params.slug;
-    console.log(id);
+    // console.log(id);
 
     window.axios
       .get("http://127.0.0.1:8000/api/posts/" + slug)
@@ -44,7 +44,7 @@ export default {
         if (results.status === 200 && results.data.success) {
           this.post = results.data.results;
         }
-        // console.log(this.posts);
+        console.log(this.post);
       })
       .catch((e) => {
         console.log(e);

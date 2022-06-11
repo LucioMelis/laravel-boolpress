@@ -2063,16 +2063,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       window.axios.get(url).then(function (results) {
-        console.log(results);
-
+        //   console.log(results);
         if (results.status === 200 && results.data.success) {
           _this.posts = results.data.results.data;
           _this.currentPage = results.data.results.current_page;
           _this.previousPageLink = results.data.results.prev_page_url;
           _this.nextPageLink = results.data.results.next_page_url;
-        }
+        } //   console.log(this.posts);
 
-        console.log(_this.posts);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -2203,15 +2201,16 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var slug = this.$route.params.slug;
-    console.log(id);
+    var slug = this.$route.params.slug; // console.log(id);
+
     window.axios.get("http://127.0.0.1:8000/api/posts/" + slug).then(function (results) {
       console.log(results);
 
       if (results.status === 200 && results.data.success) {
         _this.post = results.data.results;
-      } // console.log(this.posts);
+      }
 
+      console.log(_this.post);
     })["catch"](function (e) {
       console.log(e);
     });

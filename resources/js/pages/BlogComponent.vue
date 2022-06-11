@@ -48,14 +48,14 @@ export default {
       window.axios
         .get(url)
         .then((results) => {
-          console.log(results);
+          //   console.log(results);
           if (results.status === 200 && results.data.success) {
             this.posts = results.data.results.data;
             this.currentPage = results.data.results.current_page;
             this.previousPageLink = results.data.results.prev_page_url;
             this.nextPageLink = results.data.results.next_page_url;
           }
-          console.log(this.posts);
+          //   console.log(this.posts);
         })
         .catch((e) => {
           console.log(e);
