@@ -2103,6 +2103,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactsComponent"
 });
@@ -38004,6 +38009,16 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12 text-center" }, [_vm._v("Contatti")]),
+        _vm._v(" "),
+        _c("form", { attrs: { method: "post" } }, [
+          _c("input", { attrs: { type: "email", name: "from" } }),
+          _vm._v(" "),
+          _c("textarea", {
+            attrs: { name: "content", cols: "30", rows: "10" },
+          }),
+          _vm._v(" "),
+          _c("button", { attrs: { type: "submit" } }, [_vm._v("Invia")]),
+        ]),
       ]),
     ])
   },
