@@ -22,3 +22,5 @@ Route::get('/posts', 'Api\PostController@index')->name('index');
 
 Route::get('/posts/{slug}', 'Api\PostController@show')->name('posts.show');
 
+Route::post('/contacts', 'Api\ContactsController@store')->name('contacts');
+

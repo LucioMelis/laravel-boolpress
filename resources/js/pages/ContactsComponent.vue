@@ -23,6 +23,9 @@
         </div>
         <!-- SUBMIT  -->
         <button type="submit">Invia</button>
+        <div v-if="success" class="alert alert-success" role="alert">
+          Messaggio inviato correttamentes
+        </div>
       </form>
     </div>
   </div>
@@ -38,6 +41,7 @@ export default {
       message: "",
       sending: false,
       success: false,
+      errors: [],
     };
   },
   methods: {
@@ -48,8 +52,15 @@ export default {
           email: this.email,
           message: this.message,
         })
-        .then((response) => {
-          this.message = "";
+        .then(({ data, status }) => {
+          if (status === 200) {
+            this.success = data.success;
+            if (!data.success) {
+              this.errors = data.errors;
+              console.log(this.errors);
+            }
+          }
+          //   this.message = "";
         })
         .catch((error) => {
           console.log(error);

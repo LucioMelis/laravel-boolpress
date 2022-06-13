@@ -2125,6 +2125,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactsComponent",
   data: function data() {
@@ -2133,7 +2136,8 @@ __webpack_require__.r(__webpack_exports__);
       name: "",
       message: "",
       sending: false,
-      success: false
+      success: false,
+      errors: []
     };
   },
   methods: {
@@ -2144,8 +2148,19 @@ __webpack_require__.r(__webpack_exports__);
         name: this.name,
         email: this.email,
         message: this.message
-      }).then(function (response) {
-        _this.message = "";
+      }).then(function (_ref) {
+        var data = _ref.data,
+            status = _ref.status;
+
+        if (status === 200) {
+          _this.success = data.success;
+
+          if (!data.success) {
+            _this.errors = data.errors;
+            console.log(_this.errors);
+          }
+        } //   this.message = "";
+
       })["catch"](function (error) {
         console.log(error);
       });
@@ -38136,6 +38151,17 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("button", { attrs: { type: "submit" } }, [_vm._v("Invia")]),
+          _vm._v(" "),
+          _vm.success
+            ? _c(
+                "div",
+                {
+                  staticClass: "alert alert-success",
+                  attrs: { role: "alert" },
+                },
+                [_vm._v("\n        Messaggio inviato correttamentes\n      ")]
+              )
+            : _vm._e(),
         ]
       ),
     ]),
