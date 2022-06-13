@@ -33,7 +33,7 @@ class ContactsController extends Controller
         $lead->fill($data);
         $lead->save();
 
-        $mail = new NewContact();
+        $mail = new NewContact($lead);
         Mail::to('info@boolpress.it')->send($mail);
 
         return response()->json([
